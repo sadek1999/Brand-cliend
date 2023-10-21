@@ -1,0 +1,90 @@
+
+
+const Add = () => {
+
+    const handlAdd=e=>{
+        e.preventDefault()
+        const form=e.target;
+        const name=form.name.value;
+        const brand=form.brand.value;
+        const type=form.type.value;
+        const img=form.img.value;
+        const about=form.about.value;
+        const price=form.price.value;
+        const rating=form.rating.value;
+
+        const product={name,brand,type,img,about,price,rating};
+        console.log(product)
+
+        fetch('http://localhost:5001/products',{
+            method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(product)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+        })
+        // console.log(name,brand,type,img,about,price,rating)
+    }
+    return (
+        <div className='bg-white p-10'>
+            <div>
+                <form className='space-y-5' onSubmit={handlAdd} action="">
+                    <h1 className='text-4xl font-semibold text-center my-5'>Add products</h1>
+                    {/* row -1 */}
+                    <div className='flex gap-4 lg:flex-row '>
+                        <div className='w-full'>
+                            <h3 className='font-semibold'>Name</h3>
+                            <input className='pl-2 py-0.5 w-full' type="text" placeholder='Product Name' required name="name" id="" />
+                        </div>
+                        <div className='w-full'>
+                            <h3 className='font-semibold'>Brand</h3>
+                            <input className='pl-2 py-0.5 w-full' type="text" placeholder='Brand name' name="brand" required id="" />
+                        </div>
+                    </div>
+                    {/* row -2 */}
+                    <div className='flex gap-4 lg:flex-row '>
+                        <div className='w-full'>
+                            <h3 className='font-semibold'>Type</h3>
+                            <input className='pl-2 py-0.5 w-full' type="text" placeholder='Product Type' required name="type" id="" />
+                        </div>
+                        <div className='w-full'>
+                            <h3 className='font-semibold'>Price</h3>
+                            <input className='pl-2 py-0.5 w-full' type="text" placeholder='Price' name="price" required id="" />
+                        </div>
+                    </div>
+                    {/* row -3 */}
+                    <div className='flex gap-4 lg:flex-row '>
+                        <div className='w-full'>
+                            <h3 className='font-semibold'>Rating</h3>
+                            <input className='pl-2 py-0.5 w-full' type="text" placeholder='Rating' required name="rating" id="" />
+                        </div>
+                        <div className='w-full'>
+                            <h3 className='font-semibold'>Photo</h3>
+                            <input className='pl-2 py-0.5 w-full' type="text" placeholder='img url' name="img" required id="" />
+                        </div>
+                    </div>
+
+                    <div className='w-full'>
+                        <h3 className='font-semibold'>Short description</h3>
+                        <input className=' p-3 w-full' type="text" placeholder='about product' name="about" required id="" />
+                    </div>
+
+                    <div className=' w-full flex justify-center '>
+                        <input type="submit" className='bg-blue-600 w-80 px-4 py-2 text-xl font-semibold text-white rounded-lg ' value="Add" />
+                    </div>
+
+
+
+
+                </form>
+            </div>
+
+        </div>
+    );
+};
+
+export default Add;
