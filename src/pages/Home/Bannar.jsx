@@ -3,6 +3,7 @@ import React from 'react';
 const Bannar = () => {
     return (
         <div>
+            <img className='w-full' src="https://www.originalstorebd.com/backend/uploads/banners/slider/31.webp" alt="" />
             
         </div>
     );

@@ -34,6 +34,7 @@ const handltheme=e=>{
                             <li><NavLink to={'/'}>Home</NavLink></li>
                             <li><NavLink to={'/add'}>Add products</NavLink></li>
                             <li><NavLink to={'/card'}>My card</NavLink></li>
+                            <li><NavLink to={'/singup'}>Sing up</NavLink></li>
                             <li><NavLink to={'/singin'}>Sing in</NavLink></li>
                         </ul>
                     </div>
@@ -44,7 +45,8 @@ const handltheme=e=>{
                         <li><NavLink to={'/'}>Home</NavLink></li>
                         <li><NavLink to={'/add'}>Add products</NavLink></li>
                         <li><NavLink to={'/card'}>My card</NavLink></li>
-                        <li><NavLink to={'/singin'}>Singin</NavLink></li>
+                        <li><NavLink to={'/singup'}>Sing up</NavLink></li>
+                        <li><NavLink to={'/singin'}>Sing in</NavLink></li>
 
                     </ul>
                 </div>
