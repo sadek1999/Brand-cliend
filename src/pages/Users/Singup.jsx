@@ -3,18 +3,19 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { AuthContext } from '../../share/Auth/AuthPro';
+
 import { BsGoogle } from "react-icons/bs";
 import Navbar from '../../share/navbar/Navbar';
+import { authContext } from '../../share/Auth/AuthProvider';
 
 
 const Singup = () => {
-    const products = [];
+    const products = ['6533ef0ae83a8f08bc3e5f5d','6533efece83a8f08bc3e5f5f'];
     const [error, seterror] = useState('')
     const special = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
 
 
-    const { singup, googlesingin } = useContext(AuthContext)
+    const { singup, googlesingin } = useContext(authContext)
 
     const handlgoogle = e => {
         e.preventDefault()
@@ -34,33 +35,33 @@ const Singup = () => {
         const email = form.email.value;
         const password = form.password.value;
         const img = form.img.value;
-        console.log(name, email, password, img)
+       
 
 
-        // if (password.length < 6) {
-        //     const message = 'Password should be at least 6 characters';
-        //     return seterror(message);
-        // }
+        if (password.length < 6) {
+            const message = 'Password should be at least 6 characters';
+            return seterror(message);
+        }
 
-        // if (!/[A-Z]/.test(password)) {
-        //     console.log(password)
-        //     const message = "don't have a capital letter";
-        //     return seterror(message);
-        // }
-        // if (!/[a-z]/.test(password)) {
-        //     console.log(password)
-        //     const message = "don't have a small letter";
-        //     return seterror(message);
-        // }
-
-
-
-        // if ( special.test(password)) {
-        //     console.log(password)
-        //     return seterror("don't have a special character");
-        // }
+        if (!/[A-Z]/.test(password)) {
+            console.log(password)
+            const message = "don't have a capital letter";
+            return seterror(message);
+        }
+        if (!/[a-z]/.test(password)) {
+            console.log(password)
+            const message = "don't have a small letter";
+            return seterror(message);
+        }
 
 
+
+        if ( special.test(password)) {
+            console.log(password)
+            return seterror("don't have a special character");
+        }
+console.log("password is ok",password)
+        
 
 
         const user = { name, email, img, products }
@@ -92,8 +93,8 @@ const Singup = () => {
 
             })
             .catch(error => {
-                console.log(error)
-                seterror(error)
+                console.error(error.message)
+                seterror(error.message)
             })
 
 

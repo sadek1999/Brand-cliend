@@ -1,20 +1,21 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../share/Auth/AuthPro";
+
 import { BsGoogle } from "react-icons/bs";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "../../share/navbar/Navbar";
+import { authContext } from "../../share/Auth/AuthProvider";
 
 
 const Singin = () => {
-    const { googlesingin, singin } = useContext(AuthContext);
+    const {googlelogin, login } = useContext(authContext);
 
     const [error, seterror] = useState('')
 
     const handlgoogle = e => {
         e.preventDefault()
-        googlesingin()
+       googlelogin()
             .then(result => {
                 console.log(result)
             })
@@ -29,7 +30,7 @@ const Singin = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
-        singin(email, password)
+        login(email, password)
             .then(res => {
                 console.log(res)
                 toast.success(' Successfully add ', {
@@ -44,8 +45,10 @@ const Singin = () => {
                 });
             })
             .catch(error => {
-                seterror(error)
+                console.error(error.message)
+                seterror(error.message)
             })
+            
     }
 
 

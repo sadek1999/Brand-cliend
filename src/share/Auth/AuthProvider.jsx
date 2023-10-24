@@ -11,8 +11,7 @@ export const authContext = createContext(null)
 const AuthProvider = ({ children }) => {
     const [user, setuser] = useState(null);
     const [loding, setloding] = useState(true)
-    const [name, setname] = useState('')
-    const [img, setimg] = useState('')
+    
     const provider = new GoogleAuthProvider();
 
     const googlelogin = () => {
@@ -20,9 +19,13 @@ const AuthProvider = ({ children }) => {
     }
 
     const singup = (email, password, name, profile,) => {
-        setimg(profile)
-        setname(name)
+    
+        // setimg(profile)
+        // setname(name)
         return createUserWithEmailAndPassword(auth, email, password)
+         
+
+    
     }
 
     const login = (email, password) => {
@@ -30,15 +33,22 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
     const logout = () => {
-        setimg('')
-        setname('')
+        console.log("call for log out")
         return signOut(auth)
     }
 
     useEffect(() => {
         const unSuscribe = onAuthStateChanged(auth, currentUser => {
             console.log(currentUser)
-            setuser(currentUser);
+            console.log(currentUser.email)
+            fetch(`http://localhost:5001/users/${currentUser.email}`)
+            .then(res=>res.json())
+            .then(data=>{
+                setuser(data);
+            })
+            
+            
+            // setuser(currentUser);
             setloding(false)
         })
         return unSuscribe;
@@ -47,8 +57,7 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         user,
         loding,
-        name,
-        img,
+       
         singup,
         login,
         logout,

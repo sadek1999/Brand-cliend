@@ -1,14 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import './navbar.css'
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Auth/AuthPro";
+import { authContext } from "../Auth/AuthProvider";
+
 
 
 const Navbar = () => {
-    const {user,singout}=useContext(AuthContext)
+    const {user, logout,}=useContext(authContext)
+    
 
-    console.log(user)
-    const{img,name}=''
+    // console.log(user)
+    
     const [theme,setTheme]=useState(localStorage.getItem('theme')? localStorage.getItem('theme'):'light');
 
     useEffect(()=>{
@@ -28,8 +30,8 @@ const handltheme=e=>{
 }
 
 const handllogout=e=>{
-    e.preventDefault()
-    singout()
+    e.preventDefault();
+    logout()
     .then(res=>{
         console.log('logout ok',res)
     })
@@ -68,12 +70,18 @@ const handllogout=e=>{
                 </div>
                 <div className="navbar-end gap-2">
                 {
-                        name? <p className='text-xl font-bold  md:mr-2'>{name}</p>:<p></p>
+                        user? <p className='text-xl font-bold  md:mr-2'>{user.name}</p>:<p></p>
+                        
+                        
+                        
                     }
-                    {img ?
+                    {
+                            user? <p className='text-xl font-bold  md:mr-2'>{user.email}</p>:<p></p>
+                        }
+                    {user?.img ?
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img src={img} />
+                                <img src={user.img} />
                             </div>
                         </label> :
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

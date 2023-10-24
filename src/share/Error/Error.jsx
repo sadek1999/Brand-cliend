@@ -1,9 +1,10 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 const Error = () => {
     return (
         <div className='flex items-center justify-center'>
+          
             <div className='space-y-5'>
               <img src="https://i.ibb.co/5sN9SRD/Screenshot-2023-10-09-160311.png" alt="" />
 

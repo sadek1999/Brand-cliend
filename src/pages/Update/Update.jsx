@@ -42,7 +42,7 @@ const Update = () => {
                     theme: "light",
                 });
             })
-        // console.log(name,brand,type,img,about,price,rating)
+        
     }
 
     return (
