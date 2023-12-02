@@ -1,49 +1,69 @@
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {  useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import Navbar from '../../share/navbar/Navbar';
 import { useContext, useState } from 'react';
 import { authContext } from '../../share/Auth/AuthProvider';
+import axios from 'axios';
 
 const Details = () => {
-    const {user}=useContext(authContext)
-    const[user2,setuser2]=useState(user?user:null)
+    const { user } = useContext(authContext)
+    // const[user2,setuser2]=useState(user?user:null)
     //  console.log(user.products)
     //  console.log(user.email)
-   
-    const data = useLoaderData();
-    
-    const { name, brand, type, img, about, price, rating, _id } = data;
-    console.log(_id);
-    const handladd=e=>{
-        e.preventDefault()
-                
-                 const products=[...user2.products,data._id];
 
-        const user = {  products }
-        
-        fetch(`http://localhost:5001/users/${user.email}`, {
-            method: "PUT",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(user)
+    const data = useLoaderData();
+
+    const { name, brand, type, img, about, price, rating, _id } = data;
+    // console.log(_id);
+    const handladd = e => {
+        e.preventDefault()
+
+        console.log(data)
+        console.log(user.email)
+        const orderinfo = {
+            email: user.email,
+            product: data
+        }
+
+        axios.post('http://localhost:5001/order',orderinfo)
+        .then(res=>{
+            console.log(res.data)
+            toast.success(' Successfully Update', {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                        });
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                toast.success(' Successfully Update', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
-            })
+        // 
+
+        // fetch(`http://localhost:5001/users/${user.email}`, {
+        //     method: "PUT",
+        //     headers: {
+        //         "content-type": "application/json"
+        //     },
+        //     body: JSON.stringify(user)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         toast.success(' Successfully Update', {
+        //             position: "top-right",
+        //             autoClose: 5000,
+        //             hideProgressBar: false,
+        //             closeOnClick: true,
+        //             pauseOnHover: true,
+        //             draggable: true,
+        //             progress: undefined,
+        //             theme: "light",
+        //         });
+        //     })
     }
 
     return (
@@ -63,19 +83,19 @@ const Details = () => {
                 </div>
             </div>
             <ToastContainer
-                    position="top-right"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"
-                />
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
 
-                <ToastContainer />
+            <ToastContainer />
         </div>
 
 

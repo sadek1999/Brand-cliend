@@ -50,7 +50,7 @@ const router = createBrowserRouter([
           element: <Details></Details>,
           loader: ({ params }) => fetch(`https://automotive-server-amber.vercel.app/products/${params.id}`)
         },{
-          path:"/card",
+          path:'/mycard',
           element:<Mycard></Mycard>
         }
         

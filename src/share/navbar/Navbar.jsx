@@ -11,7 +11,7 @@ const Navbar = () => {
     const [currentuser,setcurentuser]=useState(null)
 
 
-    console.log(user)
+    // console.log(user)
 
     const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
 
@@ -50,7 +50,7 @@ const Navbar = () => {
             setcurentuser(res.data)
         })
     },[user])
-    console.log(currentuser)
+    // console.log(currentuser)
 
     return (
         <nav>
@@ -63,7 +63,7 @@ const Navbar = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li><NavLink to={'/'}>Home</NavLink></li>
                             <li><NavLink to={'/add'}>Add products</NavLink></li>
-                            <li><NavLink to={'/card'}>My card</NavLink></li>
+                            <li><NavLink to={'/mycard'}>My Card</NavLink></li>
                             <li><NavLink to={'/singup'}>Sing up</NavLink></li>
                             <li><NavLink to={'/singin'}>Sing in</NavLink></li>
                         </ul>
@@ -74,7 +74,8 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li><NavLink to={'/'}>Home</NavLink></li>
                         <li><NavLink to={'/add'}>Add products</NavLink></li>
-                        <li><NavLink to={'/card'}>My card</NavLink></li>
+                        <li><NavLink to={'/mycard'}>My Card</NavLink></li>
+                      
                         <li><NavLink to={'/singup'}>Sing up</NavLink></li>
                         <li><NavLink to={'/singin'}>Sing in</NavLink></li>
 
