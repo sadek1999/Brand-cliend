@@ -27,7 +27,7 @@ const Details = () => {
             product: data
         }
 
-        axios.post('http://localhost:5001/order',orderinfo)
+        axios.post('https://y-peach-tau.vercel.app/order',orderinfo)
         .then(res=>{
             console.log(res.data)
             toast.success(' Successfully Update', {

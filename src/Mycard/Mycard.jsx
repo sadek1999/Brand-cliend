@@ -27,7 +27,7 @@ const Mycard = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5001/order/${id}`)
+                axios.delete(`https://y-peach-tau.vercel.app/order/${id}`)
                     .then(res => {
                         // console.log(res.data)
                         Swal.fire({
@@ -46,7 +46,7 @@ const Mycard = () => {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:5001/order?email=${user?.email}`)
+        axios.get(`https://y-peach-tau.vercel.app/order?email=${user?.email}`)
             .then(res => {
                 // console.log(res.data[1].product)
                 setorders(res.data)

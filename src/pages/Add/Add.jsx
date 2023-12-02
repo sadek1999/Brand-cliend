@@ -18,7 +18,7 @@ const Add = () => {
         const product = { name, brand, type, img, about, price, rating };
         console.log(product)
 
-        fetch('http://localhost:5001/products', {
+        fetch('https://y-peach-tau.vercel.app/products', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

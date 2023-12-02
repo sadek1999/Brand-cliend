@@ -71,7 +71,7 @@ const Singup = () => {
         singup(email, password)
             .then(result => {
                 console.log(result)
-                fetch('http://localhost:5001/users', {
+                fetch('https://y-peach-tau.vercel.app/users', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"

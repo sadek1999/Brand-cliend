@@ -5,7 +5,7 @@ import Brand from "./Brand";
 const Sums = () => {
     const [products, setproducts] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5001/products/Dell`)
+        fetch(`https://y-peach-tau.vercel.app/products/Dell`)
             .then(res => res.json())
             .then(data => {
                 setproducts(data);

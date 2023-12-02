@@ -7,7 +7,7 @@ import Brand from "./Brand";
 const Hp = () => {
     const [products,setproducts]=useState([]);
     useEffect(()=>{
-        fetch(`http://localhost:5001/products/HP`)
+        fetch(`https://y-peach-tau.vercel.app/products/HP`)
         .then(res=>res.json())
         .then(data=>{
             setproducts(data);

@@ -44,7 +44,7 @@ const Navbar = () => {
     }
 
     useEffect(()=>{
-        axios.get(`http://localhost:5001/users/${user?.email}`)
+        axios.get(`https://y-peach-tau.vercel.app/users/${user?.email}`)
         .then(res=>{
             // console.log(res.data)
             setcurentuser(res.data)
