@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import Brand from "./Brand"
-import Navbar from "../../../share/navbar/Navbar";
+
 
 const Dell = () => {
 
@@ -16,7 +16,7 @@ const Dell = () => {
     },[]);
     return (
         <div>
-            <Navbar></Navbar>
+           
         <div className="carousel w-full h-96">
             <div id="slide1" className="carousel-item relative w-full">
                 <img src="https://computermania-bd.b-cdn.net/wp-content/uploads/Home-page-coundown-banner.jpg" className="w-full" />

@@ -1,7 +1,7 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLoaderData } from 'react-router-dom';
-import Navbar from '../../share/navbar/Navbar';
+
 
 const Update = () => {
     const data = useLoaderData()
@@ -47,7 +47,7 @@ const Update = () => {
 
     return (
         <div>
-            <Navbar></Navbar>
+            
             <div className='bg-white p-10'>
                 <div className="bg-[#F4F3F0] p-8">
                     <form className='space-y-5' onSubmit={handlupdate} action="">

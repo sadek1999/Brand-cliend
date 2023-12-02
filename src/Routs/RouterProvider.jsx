@@ -17,6 +17,8 @@ import Mic from './../pages/Home/Brands/Mic';
 import Lanavo from './../pages/Home/Brands/Lanavo';
 import Asus from './../pages/Home/Brands/Asus';
 import Mycard from '../Mycard/Mycard';
+import Sums from '../pages/Home/Brands/Sums';
+import Privatrout from './Privatrout';
 
 const router = createBrowserRouter([
     {
@@ -38,20 +40,20 @@ const router = createBrowserRouter([
         
         {
           path: '/add',
-          element: <Add></Add>
+          element:<Privatrout><Add></Add></Privatrout> 
         },
         {
           path: '/update/:id',
-          element: <Update></Update>,
+          element: <Privatrout><Update></Update></Privatrout> ,
           loader: ({ params }) => fetch(`https://automotive-server-amber.vercel.app/products/${params.id}`)
         },
         {
           path: '/product/:id',
-          element: <Details></Details>,
+          element: <Privatrout><Details></Details></Privatrout> ,
           loader: ({ params }) => fetch(`https://automotive-server-amber.vercel.app/products/${params.id}`)
         },{
           path:'/mycard',
-          element:<Mycard></Mycard>
+          element: <Privatrout><Mycard></Mycard></Privatrout>
         }
         
         
@@ -74,6 +76,10 @@ const router = createBrowserRouter([
         ,{
           path:"/microsoft",
           element:<Mic></Mic>,
+        },
+        {
+          path:'/samsung',
+          element:<Sums></Sums>
         }
       ]
     },

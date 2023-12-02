@@ -2,8 +2,8 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLoaderData } from 'react-router-dom';
-import Navbar from '../../share/navbar/Navbar';
-import { useContext, useState } from 'react';
+
+import { useContext } from 'react';
 import { authContext } from '../../share/Auth/AuthProvider';
 import axios from 'axios';
 
@@ -41,34 +41,12 @@ const Details = () => {
                             theme: "light",
                         });
         })
-        // 
-
-        // fetch(`http://localhost:5001/users/${user.email}`, {
-        //     method: "PUT",
-        //     headers: {
-        //         "content-type": "application/json"
-        //     },
-        //     body: JSON.stringify(user)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         toast.success(' Successfully Update', {
-        //             position: "top-right",
-        //             autoClose: 5000,
-        //             hideProgressBar: false,
-        //             closeOnClick: true,
-        //             pauseOnHover: true,
-        //             draggable: true,
-        //             progress: undefined,
-        //             theme: "light",
-        //         });
-        //     })
+        
     }
 
     return (
         <div>
-            <Navbar></Navbar>
+           
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">
                     <img src={img} className="max-w-sm rounded-lg shadow-2xl" />

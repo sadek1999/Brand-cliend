@@ -6,7 +6,7 @@ const Brands = () => {
         <div className='bg-gray-300 flex md:gap-10 lg:gap-20 items-center'>
             <div>
             <Link to={"/hp"}>
-            <img className='w-40 h-20 rounded-lg' src="https://shreepng.com/img/Inside/Logos/HP/hp%20logo%20black%20blue.png" alt="" />
+            <img className='w-40 h-20 rounded-lg' src="https://brandlogos.net/wp-content/uploads/2020/11/hp-logo.png" alt="" />
             </Link>
             </div>
             <div>
@@ -31,7 +31,7 @@ const Brands = () => {
             </div>
             <div>
             <Link to={'/asus'}>
-            <img className='w-40 h-36' src="https://k4j3j2s7.rocketcdn.me/machic/wp-content/uploads/2021/09/4.png" alt="" />
+            <img className='w-40 h-20' src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/AsusTek-black-logo.png/640px-AsusTek-black-logo.png" alt="" />
             </Link>
             </div>
  

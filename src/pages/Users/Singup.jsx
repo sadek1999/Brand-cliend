@@ -1,17 +1,19 @@
 
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { BsGoogle } from "react-icons/bs";
-import Navbar from '../../share/navbar/Navbar';
+
 import { authContext } from '../../share/Auth/AuthProvider';
 
 
 const Singup = () => {
     
     const [error, seterror] = useState('')
+   const navigate =useNavigate()
+   const location=useLocation()
     const special = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
 
 
@@ -21,10 +23,11 @@ const Singup = () => {
         e.preventDefault()
         googlesingin()
             .then(result => {
-                console.log(result)
+                // console.log(result)
+                navigate(location?.state?location?.state:'/')
             })
             .catch(error => {
-                console.log(error);
+                // console.log(error);
             })
     }
 
@@ -60,7 +63,7 @@ const Singup = () => {
             console.log(password)
             return seterror("don't have a special character");
         }
-console.log("password is ok",password)
+// console.log("password is ok",password)
         
 
 
@@ -77,7 +80,7 @@ console.log("password is ok",password)
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         toast.success(' Sing in successfully ', {
                             position: "top-right",
                             autoClose: 3000,
@@ -88,12 +91,13 @@ console.log("password is ok",password)
                             progress: undefined,
                             theme: "light",
                         });
+                        navigate(location?.state?location?.state:'/')
                     })
 
 
             })
             .catch(error => {
-                console.error(error.message)
+                // console.error(error.message)
                 seterror(error.message)
             })
 
@@ -102,7 +106,7 @@ console.log("password is ok",password)
 
     return (
         <div>
-            <Navbar></Navbar>
+           
             <div className="flex justify-center items-center  py-14">
 
 

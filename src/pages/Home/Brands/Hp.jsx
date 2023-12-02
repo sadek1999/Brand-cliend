@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import Brand from "./Brand";
-import Navbar from "../../../share/navbar/Navbar";
+
 
 
 const Hp = () => {
@@ -17,7 +17,7 @@ const Hp = () => {
 
     return (
         <div>
-            <Navbar></Navbar>
+            
             <div className="carousel w-full h-96">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src="https://www.startech.com.bd/image/cache/catalog/home/IMG-20231022-WA0004-982x500.jpg" className="w-full" />

@@ -1,7 +1,7 @@
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Navbar from '../../share/navbar/Navbar';
+
 const Add = () => {
 
     const handlAdd = e => {
@@ -43,7 +43,7 @@ const Add = () => {
     }
     return (
         <div>
-            <Navbar></Navbar>
+           
             <div className='bg-white p-10'>
                 <div className="bg-[#F4F3F0] p-8">
                     <form className='space-y-5' onSubmit={handlAdd} action="">

@@ -1,26 +1,28 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { BsGoogle } from "react-icons/bs";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Navbar from "../../share/navbar/Navbar";
+
 import { authContext } from "../../share/Auth/AuthProvider";
 
 
 const Singin = () => {
     const {googlelogin, login } = useContext(authContext);
-
+    const location=useLocation()
+    const navigate=useNavigate()
     const [error, seterror] = useState('')
 
     const handlgoogle = e => {
         e.preventDefault()
        googlelogin()
             .then(result => {
-                console.log(result)
+                // console.log(result)
+                navigate(location?.state?location?.state:'/')
             })
             .catch(error => {
-                console.log(error);
+                // console.log(error);
             })
     }
 
@@ -32,7 +34,7 @@ const Singin = () => {
         console.log(email, password)
         login(email, password)
             .then(res => {
-                console.log(res)
+                // console.log(res)
                 toast.success(' Successfully add ', {
                     position: "top-right",
                     autoClose: 5000,
@@ -43,9 +45,10 @@ const Singin = () => {
                     progress: undefined,
                     theme: "light",
                 });
+                navigate(location?.state?location?.state:'/')
             })
             .catch(error => {
-                console.error(error.message)
+                // console.error(error.message)
                 seterror(error.message)
             })
             
@@ -55,7 +58,7 @@ const Singin = () => {
     return (
 
         <div>
-            <Navbar></Navbar>
+            
             <div className="flex justify-center items-center  py-14">
 
 

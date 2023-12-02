@@ -33,24 +33,23 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
     const logout = () => {
-        console.log("call for log out")
+        // console.log("call for log out")
         return signOut(auth)
     }
 
     useEffect(() => {
         const unSuscribe = onAuthStateChanged(auth, currentUser => {
             console.log(currentUser)
-            console.log(currentUser.email)
+            // console.log(currentUser.email)
             setuser(currentUser);
-           
-            
-            
-            // setuser(currentUser);
             setloding(false)
+            
+            
+            //
         })
         return unSuscribe;
     }, [])
-
+console.log(loding)
     const authInfo = {
         user,
         loding,

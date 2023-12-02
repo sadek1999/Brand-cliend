@@ -1,25 +1,48 @@
 
 import { useContext, useEffect, useState } from 'react';
-import Navbar from '../share/navbar/Navbar';
+
 import { authContext } from '../share/Auth/AuthProvider';
-import Card from './card';
+
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 const Mycard = () => {
     const { user } = useContext(authContext)
     const [orders, setorders] = useState(null);
-    const [myorders, setmyorders] = useState(null)
+    
     // // const a=user.products[0];
 
 
 
-    const handldelet=(id)=>{
-        console.log(id)
-        axios.delete(`http://localhost:5001/order/${id}`)
-        .then(res=>{
-            console.log(res.data)
-        })
+    const handldelet = (id) => {
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won'to delate!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5001/order/${id}`)
+                    .then(res => {
+                        // console.log(res.data)
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+
+                    })
+
+            }
+        });
+
+        // console.log(id)
+
     }
 
     useEffect(() => {
@@ -33,11 +56,11 @@ const Mycard = () => {
 
 
 
-   
+
     console.log(orders)
     return (
         <div>
-            <Navbar></Navbar>
+           
             <h1>total products ={orders?.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table">
@@ -70,9 +93,9 @@ const Mycard = () => {
                             <td>
                                 <p>{order.product.brand}</p>
                             </td>
-                            <td>{order.product.price}</td>
+                            <td>{order.product.price} tk</td>
                             <th>
-                                <button onClick={()=>{handldelet(order._id)}} className="btn bg-red-400 btn-xs">details</button>
+                                <button onClick={() => { handldelet(order._id) }} className="btn bg-red-400 btn-xs">Delate</button>
                             </th>
                         </tr>
                         )}
