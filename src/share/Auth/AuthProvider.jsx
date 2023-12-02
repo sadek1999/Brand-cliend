@@ -41,11 +41,8 @@ const AuthProvider = ({ children }) => {
         const unSuscribe = onAuthStateChanged(auth, currentUser => {
             console.log(currentUser)
             console.log(currentUser.email)
-            fetch(`http://localhost:5001/users/${currentUser.email}`)
-            .then(res=>res.json())
-            .then(data=>{
-                setuser(data);
-            })
+            setuser(currentUser);
+           
             
             
             // setuser(currentUser);

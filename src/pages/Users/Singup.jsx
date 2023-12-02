@@ -10,7 +10,7 @@ import { authContext } from '../../share/Auth/AuthProvider';
 
 
 const Singup = () => {
-    const products = ['6533ef0ae83a8f08bc3e5f5d','6533efece83a8f08bc3e5f5f'];
+    
     const [error, seterror] = useState('')
     const special = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
 
@@ -64,7 +64,7 @@ console.log("password is ok",password)
         
 
 
-        const user = { name, email, img, products }
+        const user = { name, email, img}
         singup(email, password)
             .then(result => {
                 console.log(result)
@@ -78,9 +78,9 @@ console.log("password is ok",password)
                     .then(res => res.json())
                     .then(data => {
                         console.log(data);
-                        toast.success(' Successfully add ', {
+                        toast.success(' Sing in successfully ', {
                             position: "top-right",
-                            autoClose: 5000,
+                            autoClose: 3000,
                             hideProgressBar: false,
                             closeOnClick: true,
                             pauseOnHover: true,
